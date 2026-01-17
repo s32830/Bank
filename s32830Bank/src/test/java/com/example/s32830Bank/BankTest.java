@@ -39,9 +39,18 @@ class BankTest {
     void zlecenie() {
         Klient klient = new Klient("Jan", "Nowak", "jan@wp.pl", 100, 1);
         when(klientStorage.getKlientById(1)).thenReturn(klient);
+        Zlecenie zlecenie = new Zlecenie(1,50,1,true, klient);
         Zlecenie result = bank.zlecenie(1, 50, 1, true);
-        //assertThat(result).isNotNull();
+        assertThat(zlecenie.getnewbalance()).isEqualTo(150);
         assertThat(klient.getBalance()).isEqualTo(150);
+    }
+
+    @Test
+    void deposit(){
+        Klient klient = new Klient("Jan", "Nowak", "jan@wp.pl", 100, 1);
+        when(klientStorage.getKlientById(1)).thenReturn(klient);
+        Zlecenie deposit = bank.deposit(1, 100, 1, true);
+        assertThat(klient.getBalance()).isEqualTo(200);
     }
 
     @Test

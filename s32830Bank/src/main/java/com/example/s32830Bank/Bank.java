@@ -33,8 +33,10 @@ public class Bank {
             klient.addBalance(amount);
             Zlecenie z = zlecenieStorage.getZlecenieById(id);
             return z;
+        }else {
+            System.out.println("nie ma takiego klineta");
+            return null;
         }
-        return null;
     }
 
 
@@ -48,12 +50,22 @@ public class Bank {
                 return z;
             }
         }
+        else {
+            System.out.println("nie ma takiego klineta");
+            return null;
+        }
         return null;
     }
 
     public Klient readKlient(int id){
-        Klient klient = klientStorage.getKlientById(id);
+        if(klientStorage.getKlientById(id) != null) {
+            Klient klient = klientStorage.getKlientById(id);
             return klient;
+        }
+        else {
+            System.out.println("nie ma takiego klineta");
+            return null;
+        }
     }
 
 }
