@@ -42,6 +42,7 @@ class BankTest {
         Zlecenie zlecenie = new Zlecenie(1,50,1,true, klient);
         Zlecenie result = bank.zlecenie(1, 50, 1, true);
         assertThat(zlecenie.getnewbalance()).isEqualTo(150);
+        assertThat(zlecenie.isStatus()).isEqualTo(true);
         assertThat(klient.getBalance()).isEqualTo(150);
     }
 
@@ -70,3 +71,4 @@ class BankTest {
         assertThat(result.getName()).isEqualTo("Jan");
     }
 }
+
